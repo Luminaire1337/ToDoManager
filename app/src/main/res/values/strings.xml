@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ToDoManager</string>
+    <string name="use_sqlite_database">Use SQLite Database</string>
+    <string name="use_remote_mysql_database">Use remote MySQL Database</string>
+    <string name="todo_title">Todo Title</string>
+    <string name="mark_as_done">Mark as Done</string>
+    <string name="delete_todo">Delete Todo</string>
+    <string name="add_a_new_todo">Add a new todo</string>
+    <string name="add">Add</string>
+</resources>

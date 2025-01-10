@@ -1,3 +1,12 @@
+import java.util.Properties
+
+// Load local.properties
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -14,6 +23,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Add DATABASE_URL to BuildConfig
+        buildConfigField(
+            "String",
+            "DATABASE_URL",
+            "\"${localProperties.getProperty("database_url")}\""
+        )
     }
 
     buildTypes {
@@ -23,11 +39,22 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    packaging {
+        resources {
+            excludes += "META-INF/*"
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 
@@ -37,8 +64,10 @@ dependencies {
     implementation(libs.material)
     implementation(libs.room.common)
     implementation(libs.room.runtime)
+    implementation(libs.mysql.connector)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     annotationProcessor(libs.room.compiler)
 }
+

@@ -8,6 +8,7 @@ material = "1.12.0"
 roomCommon = "2.6.1"
 roomRuntime = "2.6.1"
 roomCompiler = "2.6.1"
+mysqlConnector = "5.1.49"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -18,6 +19,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+mysql-connector = { group = "mysql", name = "mysql-connector-java", version.ref = "mysqlConnector" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
